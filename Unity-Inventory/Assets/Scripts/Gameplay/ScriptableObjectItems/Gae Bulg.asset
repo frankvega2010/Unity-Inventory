@@ -13,7 +13,13 @@ MonoBehaviour:
   m_Name: Gae Bulg
   m_EditorClassIdentifier: 
   itemName: Gae Bulg
-  type: Melee
-  damage: 120
-  weight: 5
-  id: 22
+  itemType: 2
+  itemSubType: 1
+  itemLevel: 20
+  damage: 200
+  defense: 0
+  weight: 6.4
+  durability: 100
+  itemSlot: 0
+  itemSprite: {fileID: 0}
+  itemModel: {fileID: 0}

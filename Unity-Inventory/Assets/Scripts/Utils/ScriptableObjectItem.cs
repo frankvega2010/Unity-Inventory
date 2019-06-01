@@ -9,9 +9,15 @@ public class ScriptableObjectItem : ScriptableObject
 {
     //https://docs.unity3d.com/Manual/class-ScriptableObject.html
     public string itemName;
-    public string type;
-    public float damage;
+    public Item.itemsType itemType;
+    public Item.itemsSubType itemSubType;
+    public int itemLevel;
+    public int damage;
+    public int defense;
     public float weight;
-    public int id;
+    public float durability;
+    public int itemSlot;
+    public Sprite itemSprite;
+    public GameObject itemModel;
     //public Sprite imagen;
 }

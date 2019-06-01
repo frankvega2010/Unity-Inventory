@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Item
 {
     public enum itemsType
@@ -13,62 +14,46 @@ public class Item
         maxTypes
     }
 
-    public enum weaponsType
-    {
-        none,
-        melee,
-        range,
-        maxTypes
-    }
-
-    public enum armorsType
-    {
-        none,
-        light,
-        medium,
-        heavy,
-        maxTypes
-    }
-
     public enum itemsSubType
     {
         none,
-        weaponType,
-        armorType,
+        weaponMelee,
+        weaponRange,
+        armorLight,
+        armorMedium,
+        armorHeavy,
         maxTypes
     }
 
     public string itemName;
     public itemsType itemType;
-
     public itemsSubType itemSubType;
-    private weaponsType weaponType = weaponsType.none;
-    private armorsType armorType = armorsType.none;
-
     public int itemLevel;
+    public int damage;
+    public int defense;
     public float weight;
     public float durability;
     public int itemSlot;
     public Sprite itemSprite;
     public GameObject itemModel;
 
-    public void setWeaponType(weaponsType aType)
-    {
-        weaponType = aType;
-    }
+    //public void setWeaponType(weaponsType aType)
+    //{
+    //    weaponType = aType;
+    //}
 
-    public weaponsType getWeaponType()
-    {
-        return weaponType;
-    }
+    //public weaponsType getWeaponType()
+    //{
+    //    return weaponType;
+    //}
 
-    public void setArmorType(armorsType aType)
-    {
-        armorType = aType;
-    }
+    //public void setArmorType(armorsType aType)
+    //{
+    //    armorType = aType;
+    //}
 
-    public armorsType getArmorType()
-    {
-        return armorType;
-    }
+    //public armorsType getArmorType()
+    //{
+    //    return armorType;
+    //}
 }

@@ -10,9 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40485a6f3cae0f643abf6084231a19a9, type: 3}
-  m_Name: Wooden Sword
+  m_Name: Gate Of Babylon
   m_EditorClassIdentifier: 
-  itemName: Wooden Sword
-  type: Melee
-  damage: 5
-  weight: 1.2
+  itemName: Gate Of Babylon
+  itemType: 2
+  itemSubType: 2
+  itemLevel: 75
+  damage: 532
+  defense: 0
+  weight: 2.5
+  durability: 100
+  itemSlot: 0
+  itemSprite: {fileID: 0}
+  itemModel: {fileID: 0}
