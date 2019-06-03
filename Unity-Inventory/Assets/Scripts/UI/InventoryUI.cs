@@ -31,6 +31,9 @@ public class InventoryUI : MonoBehaviour
     private Inventory playerInventory;
     private GameObject instancedPanel;
     private RectTransform instancedItemRect;
+
+    private string noNameGiven = "";
+    private bool existingItem = false;
     private void Start()
     {
         for (int i = 0; i < maxPanels - equipmentSlots.Count; i++)
@@ -165,7 +168,7 @@ public class InventoryUI : MonoBehaviour
             {
                 if (!isPanelOutOfInventoryBounds)
                 {
-                    playerInventory.addItem(oldIndex,"",false,Item.itemsType.none);
+                    playerInventory.addItem(oldIndex,noNameGiven,existingItem,Item.itemsType.none);
                 }
                 else
                 {
@@ -174,13 +177,13 @@ public class InventoryUI : MonoBehaviour
             }
             else
             {
-                if (playerInventory.addItem(playerInventory.newIndex, "", false, Item.itemsType.none))
+                if (playerInventory.addItem(playerInventory.newIndex, noNameGiven, existingItem, Item.itemsType.none))
                 {
                     panel.GetComponent<SlotIndex>().index = playerInventory.newIndex;
                 }
                 else
                 {
-                    playerInventory.addItem(oldIndex, "", false, Item.itemsType.none);
+                    playerInventory.addItem(oldIndex, noNameGiven, existingItem, Item.itemsType.none);
                 }
                 
             }

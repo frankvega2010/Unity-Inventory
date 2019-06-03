@@ -18,7 +18,9 @@ public class PlayerController : MonoBehaviour
 
     //private Item.itemsType itemType;
     private Inventory playerInventory;
-    
+    private int noIndexGiven = -1;
+    private string noNameGiven = "";
+    private bool newItem = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,10 +38,10 @@ public class PlayerController : MonoBehaviour
                 switch (randomNumber)
                 {
                     case 0:
-                        playerInventory.addItem(-1,"", true,Item.itemsType.weapon);
+                        playerInventory.addItem(noIndexGiven, noNameGiven, newItem, Item.itemsType.weapon);
                         break;
                     case 1:
-                        playerInventory.addItem(-1,"", true, Item.itemsType.armor);
+                        playerInventory.addItem(noIndexGiven, noNameGiven, newItem, Item.itemsType.armor);
                         break;
                     default:
                         break;
@@ -52,7 +54,7 @@ public class PlayerController : MonoBehaviour
         {
             if(inventoryIsOpen)
             {
-                playerInventory.addItem(index,itemName, true, Item.itemsType.none);
+                playerInventory.addItem(index,itemName, newItem, Item.itemsType.none);
             }
         }
 
