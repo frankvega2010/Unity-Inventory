@@ -7,29 +7,32 @@ public class InventoryUI : MonoBehaviour
 {
     public delegate void InventoryAction(int index);
     public InventoryAction InventoryDragItem;
-
-    public GameObject panel;
+    
+    [Header("Game Objects")]
+    public GameObject[] panelGroup;
     public List<GameObject> equipmentSlots;
+    public GameObject panel;
+    public GameObject InventoryGameObject;
+
+    [Header("Panel Settings")] //its not "Panel" , it should be dragIcon.
+    public int maxPanels;
+    public Transform newParent;
     public bool isPanelOutOfInventoryBounds;
+
+    //[Header("Inventory Settings")]
+
+    [Header("Icon Data")]
     public Color invisibleColor;
     public Color newColor;
     public Sprite oldSprite;
-    public int maxPanels;
-    public GameObject[] panelGroup;
     public int oldIndex;
-    public Transform newParent;
 
-    public GameObject InventoryGameObject;
+
     private Inventory playerInventory;
-
-    public GameObject EquipmentInventoryGameObject;
-    private Inventory EquipmentplayerInventory;
-
     private GameObject instancedPanel;
     private RectTransform instancedItemRect;
     private void Start()
     {
-        //int maxPanels = 28;
         for (int i = 0; i < maxPanels - equipmentSlots.Count; i++)
         {
                 Debug.Log("instanciated");

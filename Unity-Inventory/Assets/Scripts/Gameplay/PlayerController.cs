@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Game Objects")]
     public GameObject playerInventoryGameObject;
     public GameObject playerInventoryUI;
-    public int playerLevel;
-    public int index;
-    public string itemName;
-    public int itemLevel;
-    public Item.itemsType itemType;
 
-    private Inventory playerInventory;
+    [Header("Player Info")]
+    public int playerLevel;
     public bool inventoryIsOpen;
+
+    [Header("Spawn Item Info")]
+    public string itemName;
+    public int index;
+
+    //private Item.itemsType itemType;
+    private Inventory playerInventory;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +52,7 @@ public class PlayerController : MonoBehaviour
         {
             if(inventoryIsOpen)
             {
-                playerInventory.addItem(index,itemName, true, itemType);
+                playerInventory.addItem(index,itemName, true, Item.itemsType.none);
             }
         }
 
