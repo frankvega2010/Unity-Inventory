@@ -9,17 +9,15 @@ public class InventoryUI : MonoBehaviour
     public InventoryAction InventoryDragItem;
     
     [Header("Game Objects")]
-    public GameObject[] panelGroup;
+    public GameObject[] iconsGroup;
     public List<GameObject> equipmentSlots;
-    public GameObject panel;
+    public GameObject newIcon;
     public GameObject InventoryGameObject;
 
-    [Header("Panel Settings")] //its not "Panel" , it should be dragIcon.
-    public int maxPanels;
+    [Header("New Icon Settings")] //its not "Panel" , it should be dragIcon.
+    public int maxIcons;
     public Transform newParent;
-    public bool isPanelOutOfInventoryBounds;
-
-    //[Header("Inventory Settings")]
+    public bool isIconOutOfInventoryBounds;
 
     [Header("Icon Data")]
     public Color invisibleColor;
@@ -31,23 +29,25 @@ public class InventoryUI : MonoBehaviour
     private Inventory playerInventory;
     private GameObject instancedPanel;
     private RectTransform instancedItemRect;
+    private UIDragItem draggedNewItem; //
 
     private string noNameGiven = "";
     private bool existingItem = false;
+
     private void Start()
     {
-        for (int i = 0; i < maxPanels - equipmentSlots.Count; i++)
+        for (int i = 0; i < maxIcons - equipmentSlots.Count; i++)
         {
                 Debug.Log("instanciated");
-                GameObject newItemUI = Instantiate(panel);
+                GameObject newItemUI = Instantiate(newIcon);
                 newItemUI.transform.SetParent(gameObject.transform);
                 newItemUI.SetActive(true);
 
-                panelGroup[i] = newItemUI;
-                panelGroup[i].GetComponent<SlotIndex>().index = i;
+                iconsGroup[i] = newItemUI;
+                iconsGroup[i].GetComponent<SlotIndex>().index = i;
 
-                UIDragItem DraggedItem = panelGroup[i].GetComponent<UIDragItem>();
-                UIPlaceItem PlaceItem = panelGroup[i].GetComponent<UIPlaceItem>();
+                UIDragItem DraggedItem = iconsGroup[i].GetComponent<UIDragItem>();
+                UIPlaceItem PlaceItem = iconsGroup[i].GetComponent<UIPlaceItem>();
 
                 DraggedItem.OnItemBeginDrag = OnItemBeginDrag;
                 DraggedItem.OnItemEndDrag = OnItemEndDrag;
@@ -72,35 +72,37 @@ public class InventoryUI : MonoBehaviour
             PlaceItem.OnItemPointerExit = OnItemPointerExit;
             PlaceItem.enabled = true;
 
-            panelGroup[maxPanels - equipmentSlots.Count + i] = equipmentSlots[i];
-            panelGroup[maxPanels - equipmentSlots.Count + i].GetComponent<SlotIndex>().index = maxPanels - equipmentSlots.Count + i;
+            iconsGroup[maxIcons - equipmentSlots.Count + i] = equipmentSlots[i];
+            iconsGroup[maxIcons - equipmentSlots.Count + i].GetComponent<SlotIndex>().index = maxIcons - equipmentSlots.Count + i;
         }
 
         playerInventory = InventoryGameObject.GetComponent<Inventory>();
 
-        UIDragItem DraggedItem2 = panel.GetComponent<UIDragItem>();
-        DraggedItem2.OnItemDrag = OnItemDrag;
-        //DraggedItem2.isIntance = true;
+        draggedNewItem = newIcon.GetComponent<UIDragItem>();
+        draggedNewItem.OnItemDrag = OnItemDrag;
     }
 
     private void Update()
     {
-        if (panel.GetComponent<UIDragItem>().isMoving)
+        if (draggedNewItem != null)
         {
-            panel.transform.position = Input.mousePosition;
-        }
+            if (draggedNewItem.isMoving)
+            {
+                newIcon.transform.position = Input.mousePosition;
+            }
+        } 
     }
 
     public GameObject addItem(Sprite spriteToAdd, int index)
     {
-        if (panelGroup[index] != null)
+        if (iconsGroup[index] != null)
         {
-            Image newSprite = panelGroup[index].GetComponent<Image>();
+            Image newSprite = iconsGroup[index].GetComponent<Image>();
             newSprite.sprite = spriteToAdd;
             newSprite.color = newColor;
-            panelGroup[index].GetComponent<UIPlaceItem>().enabled = false;
+            iconsGroup[index].GetComponent<UIPlaceItem>().enabled = false;
 
-            return panelGroup[index];
+            return iconsGroup[index];
         }
 
         return null;
@@ -109,8 +111,8 @@ public class InventoryUI : MonoBehaviour
     public void removeItem(int index)
     {
 
-        Image currentSprite = panelGroup[index].GetComponent<Image>();
-        panelGroup[index].GetComponent<UIPlaceItem>().enabled = true;
+        Image currentSprite = iconsGroup[index].GetComponent<Image>();
+        iconsGroup[index].GetComponent<UIPlaceItem>().enabled = true;
 
         currentSprite.color = invisibleColor;
         currentSprite.sprite = oldSprite;
@@ -119,17 +121,17 @@ public class InventoryUI : MonoBehaviour
     public void OnItemBeginDrag(int index)
     {
 
-        if (panelGroup[index].GetComponent<Image>().sprite != oldSprite)
+        if (iconsGroup[index].GetComponent<Image>().sprite != oldSprite)
         {
-            panel.SetActive(true);
+            newIcon.SetActive(true);
             oldIndex = index;
 
 
-            Image newItemUIImage = panel.GetComponent<Image>();
-            instancedItemRect = panel.GetComponent<RectTransform>();
-            panel.name = "New Item";
-            panel.transform.SetParent(newParent);
-            panel.GetComponent<UIDragItem>().isMoving = true;
+            Image newItemUIImage = newIcon.GetComponent<Image>();
+            instancedItemRect = newIcon.GetComponent<RectTransform>();
+            newIcon.name = "New Item";
+            newIcon.transform.SetParent(newParent);
+            draggedNewItem.isMoving = true;
             instancedItemRect.sizeDelta = new Vector2(60, 60);
             newItemUIImage.color = newColor;
 
@@ -162,11 +164,11 @@ public class InventoryUI : MonoBehaviour
 
     public void OnItemEndDrag(int index)
     {
-        if (panelGroup[index].GetComponent<Image>().sprite == oldSprite && panel.activeSelf)
+        if (iconsGroup[index].GetComponent<Image>().sprite == oldSprite && newIcon.activeSelf)
         {
             if (playerInventory.newIndex == 30) // switch to -1
             {
-                if (!isPanelOutOfInventoryBounds)
+                if (!isIconOutOfInventoryBounds)
                 {
                     playerInventory.addItem(oldIndex,noNameGiven,existingItem,Item.itemsType.none);
                 }
@@ -179,7 +181,7 @@ public class InventoryUI : MonoBehaviour
             {
                 if (playerInventory.addItem(playerInventory.newIndex, noNameGiven, existingItem, Item.itemsType.none))
                 {
-                    panel.GetComponent<SlotIndex>().index = playerInventory.newIndex;
+                    newIcon.GetComponent<SlotIndex>().index = playerInventory.newIndex;
                 }
                 else
                 {
@@ -187,17 +189,17 @@ public class InventoryUI : MonoBehaviour
                 }
                 
             }
-            panel.GetComponent<UIDragItem>().isMoving = false;
+            draggedNewItem.isMoving = false;
             Debug.Log("drag ended");
 
-            panel.SetActive(false);
+            newIcon.SetActive(false);
         }
     }
 
     public void OnItemDrag(Vector3 position)
     {
         Debug.Log("asdd42");
-        panel.transform.position = position;
+        newIcon.transform.position = position;
     }
 
     public void OnItemPointerEnter(int index)

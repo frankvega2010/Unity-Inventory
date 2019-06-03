@@ -159,7 +159,7 @@ public class Inventory : MonoBehaviour
     public void deleteItem(int index)
     {
 
-                if (inventoryUI.panelGroup[index].GetComponent<Image>().sprite != inventoryUI.oldSprite)
+                if (inventoryUI.iconsGroup[index].GetComponent<Image>().sprite != inventoryUI.oldSprite)
                 {
                     inventoryUI.removeItem(index);
 
@@ -188,7 +188,7 @@ public class Inventory : MonoBehaviour
     public void deleteItem(int index, Item itemToRemove)
     {
 
-                if (inventoryUI.panelGroup[index].GetComponent<Image>().sprite != inventoryUI.oldSprite)
+                if (inventoryUI.iconsGroup[index].GetComponent<Image>().sprite != inventoryUI.oldSprite)
                 {
                     Debug.Log("Deleted item on slot number: " + index);
                     inventoryUI.removeItem(index);

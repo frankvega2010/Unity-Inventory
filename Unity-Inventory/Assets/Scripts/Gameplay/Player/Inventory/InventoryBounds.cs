@@ -15,12 +15,12 @@ public class InventoryBounds : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public void OnPointerEnter(PointerEventData eventData)
     {
         Debug.Log("IT WILL DISSAPPEAR");
-        inventoryUIPlayer.isPanelOutOfInventoryBounds = true;
+        inventoryUIPlayer.isIconOutOfInventoryBounds = true;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         Debug.Log("IT WONT DISSAPPEAR");
-        inventoryUIPlayer.isPanelOutOfInventoryBounds = false;
+        inventoryUIPlayer.isIconOutOfInventoryBounds = false;
     }
 }
