@@ -1960,6 +1960,9 @@ MonoBehaviour:
   playerInventoryUI: {fileID: 1634621561}
   playerLevel: 5
   index: 3
+  itemName: Gae Bulg
+  itemLevel: 20
+  itemType: 0
   inventoryIsOpen: 0
 --- !u!4 &724429041
 Transform:
@@ -3344,8 +3347,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotsSize: 30
-  slots: 000000000000000000000000000000000000000000000000000000000000
   maxBackpackSlots: 27
+  slots: 000000000000000000000000000000000000000000000000000000000000
   slotIndex: 3
   items: []
   item:
@@ -3363,8 +3366,6 @@ MonoBehaviour:
     itemToDelete: {fileID: 0}
   newIndex: 0
   uniqueItem: {fileID: 11400000, guid: f5b0ac611e973794aae3aa17acf57ce8, type: 2}
-  InventoryCurrentType: 0
-  isEquipmentSlot: 0
   weaponNames:
   - Wooden Sword
   - Golden Sword
@@ -3376,12 +3377,6 @@ MonoBehaviour:
   - One Punch
   - Mighty Knuckles
   - Bloody Knuckles
-  maxSprites: 4
-  weaponSprites:
-  - {fileID: 21300000, guid: 6e48d284233dba54abc707cd2b89671f, type: 3}
-  - {fileID: 21300000, guid: 2abeaa6044d437940bb079ad7a446908, type: 3}
-  - {fileID: 21300000, guid: 7fa87491ac2a845408187a29da57ac15, type: 3}
-  - {fileID: 21300000, guid: f00893858620ef943bc2bba956502d10, type: 3}
   armorNames:
   - King's Armor
   - Dark Armor
@@ -3393,13 +3388,23 @@ MonoBehaviour:
   - Berzerker Armor
   - A Pair of Pants
   - Casual Clothes
+  maxSprites: 4
   maxArmorSprites: 10
+  weaponSprites:
+  - {fileID: 21300000, guid: 6e48d284233dba54abc707cd2b89671f, type: 3}
+  - {fileID: 21300000, guid: 2abeaa6044d437940bb079ad7a446908, type: 3}
+  - {fileID: 21300000, guid: 7fa87491ac2a845408187a29da57ac15, type: 3}
+  - {fileID: 21300000, guid: f00893858620ef943bc2bba956502d10, type: 3}
   armorSprites:
   - {fileID: 21300000, guid: 5349c50274f721e469ad1b8aadf983b8, type: 3}
   - {fileID: 21300000, guid: c6583718549019843b05f78233c8f843, type: 3}
   - {fileID: 21300000, guid: 96e2395419dc49d4fb45916503062180, type: 3}
   - {fileID: 21300000, guid: 7bd17df58b919484eaf87e41c4d86d34, type: 3}
   - {fileID: 21300000, guid: 20a3b3a071a721d49b72ddd58013dadb, type: 3}
+  uniqueItems:
+  - {fileID: 11400000, guid: f5b0ac611e973794aae3aa17acf57ce8, type: 2}
+  - {fileID: 11400000, guid: 4f51bc121213302409154c58684a08a0, type: 2}
+  - {fileID: 11400000, guid: e9a2d8649d3f09245b25704330ef3327, type: 2}
   inventoryUIGameObject: {fileID: 545685250}
   equipmentInventoryUIGameObject: {fileID: 545685250}
 --- !u!4 &1742821863

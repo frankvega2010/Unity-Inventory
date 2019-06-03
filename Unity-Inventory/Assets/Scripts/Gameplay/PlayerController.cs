@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     public GameObject playerInventoryUI;
     public int playerLevel;
     public int index;
+    public string itemName;
+    public int itemLevel;
+    public Item.itemsType itemType;
 
     private Inventory playerInventory;
     public bool inventoryIsOpen;
@@ -28,10 +31,10 @@ public class PlayerController : MonoBehaviour
                 switch (randomNumber)
                 {
                     case 0:
-                        playerInventory.addWeapon("", true);
+                        playerInventory.addItem(-1,"", true,Item.itemsType.weapon);
                         break;
                     case 1:
-                        playerInventory.addArmor("", true);
+                        playerInventory.addItem(-1,"", true, Item.itemsType.armor);
                         break;
                     default:
                         break;
@@ -44,7 +47,7 @@ public class PlayerController : MonoBehaviour
         {
             if(inventoryIsOpen)
             {
-                playerInventory.addWeapon(index,"1", true);
+                playerInventory.addItem(index,itemName, true, itemType);
             }
         }
 

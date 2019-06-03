@@ -162,7 +162,7 @@ public class InventoryUI : MonoBehaviour
             {
                 if (!isPanelOutOfInventoryBounds)
                 {
-                    playerInventory.addWeapon(oldIndex,"",false);
+                    playerInventory.addItem(oldIndex,"",false,Item.itemsType.none);
                 }
                 else
                 {
@@ -171,13 +171,13 @@ public class InventoryUI : MonoBehaviour
             }
             else
             {
-                if(playerInventory.addWeapon(playerInventory.newIndex,"",false))
+                if (playerInventory.addItem(playerInventory.newIndex, "", false, Item.itemsType.none))
                 {
                     panel.GetComponent<PanelIndex>().index3 = playerInventory.newIndex;
                 }
                 else
                 {
-                    playerInventory.addWeapon(oldIndex,"",false);
+                    playerInventory.addItem(oldIndex, "", false, Item.itemsType.none);
                 }
                 
             }
