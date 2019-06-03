@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class SlotIndex : MonoBehaviour
 {
-    public int index3;
+    public int index;
 }

@@ -41,7 +41,7 @@ public class InventoryUI : MonoBehaviour
                 newItemUI.SetActive(true);
 
                 panelGroup[i] = newItemUI;
-                panelGroup[i].GetComponent<SlotIndex>().index3 = i;
+                panelGroup[i].GetComponent<SlotIndex>().index = i;
 
                 UIDragItem DraggedItem = panelGroup[i].GetComponent<UIDragItem>();
                 UIPlaceItem PlaceItem = panelGroup[i].GetComponent<UIPlaceItem>();
@@ -70,7 +70,7 @@ public class InventoryUI : MonoBehaviour
             PlaceItem.enabled = true;
 
             panelGroup[maxPanels - equipmentSlots.Count + i] = equipmentSlots[i];
-            panelGroup[maxPanels - equipmentSlots.Count + i].GetComponent<SlotIndex>().index3 = maxPanels - equipmentSlots.Count + i;
+            panelGroup[maxPanels - equipmentSlots.Count + i].GetComponent<SlotIndex>().index = maxPanels - equipmentSlots.Count + i;
         }
 
         playerInventory = InventoryGameObject.GetComponent<Inventory>();
@@ -113,13 +113,13 @@ public class InventoryUI : MonoBehaviour
         currentSprite.sprite = oldSprite;
     }
 
-    public void OnItemBeginDrag(int index2)
+    public void OnItemBeginDrag(int index)
     {
 
-        if (panelGroup[index2].GetComponent<Image>().sprite != oldSprite)
+        if (panelGroup[index].GetComponent<Image>().sprite != oldSprite)
         {
             panel.SetActive(true);
-            oldIndex = index2;
+            oldIndex = index;
 
 
             Image newItemUIImage = panel.GetComponent<Image>();
@@ -176,7 +176,7 @@ public class InventoryUI : MonoBehaviour
             {
                 if (playerInventory.addItem(playerInventory.newIndex, "", false, Item.itemsType.none))
                 {
-                    panel.GetComponent<SlotIndex>().index3 = playerInventory.newIndex;
+                    panel.GetComponent<SlotIndex>().index = playerInventory.newIndex;
                 }
                 else
                 {

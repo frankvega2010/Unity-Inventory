@@ -19,7 +19,7 @@ public class UIDragItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (OnItemBeginDrag != null)
         {
             //Debug.Log("--------------------- INDEX 3 IS   " + this.GetComponent<PanelIndex>().index3);
-            OnItemBeginDrag(this.GetComponent<SlotIndex>().index3);
+            OnItemBeginDrag(this.GetComponent<SlotIndex>().index);
         }
     }
 
@@ -27,7 +27,7 @@ public class UIDragItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         if (OnItemEndDrag != null)
         {
-            OnItemEndDrag(GetComponent<SlotIndex>().index3);
+            OnItemEndDrag(GetComponent<SlotIndex>().index);
         }
     }
 }
