@@ -12,7 +12,7 @@ public class UIDragItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public OnItemAction OnItemEndDrag;
     public OnItemMovement OnItemDrag;
 
-    public bool isMoving;
+    public bool isMoving; // pasarlo a InventoryUI?
 
     public void OnPointerDown(PointerEventData eventData)
     {

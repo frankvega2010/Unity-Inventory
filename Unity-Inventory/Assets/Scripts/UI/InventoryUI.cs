@@ -33,6 +33,7 @@ public class InventoryUI : MonoBehaviour
 
     private string noNameGiven = "";
     private bool existingItem = false;
+    private int noIndex = -1;
 
     private void Start()
     {
@@ -144,7 +145,6 @@ public class InventoryUI : MonoBehaviour
             }
 
 
-
             if (InventoryDragItem != null)
             {
 
@@ -166,7 +166,7 @@ public class InventoryUI : MonoBehaviour
     {
         if (iconsGroup[index].GetComponent<Image>().sprite == oldSprite && newIcon.activeSelf)
         {
-            if (playerInventory.newIndex == 30) // switch to -1
+            if (playerInventory.newIndex == noIndex) // switch to -1
             {
                 if (!isIconOutOfInventoryBounds)
                 {
@@ -210,7 +210,7 @@ public class InventoryUI : MonoBehaviour
 
     public void OnItemPointerExit(int index)
     {
-        playerInventory.newIndex = 30;
+        playerInventory.newIndex = noIndex;
         Debug.Log("New Index : " + playerInventory.newIndex);
     }
 }
