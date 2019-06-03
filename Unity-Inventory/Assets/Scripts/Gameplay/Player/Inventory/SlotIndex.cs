@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PanelIndex : MonoBehaviour
+public class SlotIndex : MonoBehaviour
 {
     public int index3;
 }

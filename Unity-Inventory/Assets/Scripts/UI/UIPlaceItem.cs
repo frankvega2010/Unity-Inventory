@@ -20,7 +20,7 @@ public class UIPlaceItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         {
             Image iconImage = gameObject.GetComponent<Image>();
             iconImage.color = Color.red;
-            OnItemPointerEnter(GetComponent<PanelIndex>().index3);
+            OnItemPointerEnter(GetComponent<SlotIndex>().index3);
         }
     }
 
@@ -30,7 +30,7 @@ public class UIPlaceItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         {
             Image iconImage = gameObject.GetComponent<Image>();
             iconImage.color = new Vector4(0, 0, 0, 0);
-            OnItemPointerExit(GetComponent<PanelIndex>().index3);
+            OnItemPointerExit(GetComponent<SlotIndex>().index3);
         }
     }
 }
