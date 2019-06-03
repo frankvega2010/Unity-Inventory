@@ -36,24 +36,5 @@ public class Item
     public int itemSlot;
     public Sprite itemSprite;
     public GameObject itemModel;
-
-    //public void setWeaponType(weaponsType aType)
-    //{
-    //    weaponType = aType;
-    //}
-
-    //public weaponsType getWeaponType()
-    //{
-    //    return weaponType;
-    //}
-
-    //public void setArmorType(armorsType aType)
-    //{
-    //    armorType = aType;
-    //}
-
-    //public armorsType getArmorType()
-    //{
-    //    return armorType;
-    //}
+    public GameObject itemToDelete;
 }
